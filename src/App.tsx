@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react'
+import { CssBaseline } from '@mui/material'
+import { ThemeProvider } from '@emotion/react'
+import { Route, Routes } from 'react-router'
 
-function App() {
+import { FINANCIAL_INDEPENDENCE_ROUTE, LIQUIDITY_ROUTE } from './utils/routes'
+import { LiquidityRoute } from './routes/LiquidityRoute/LiquidityRoute'
+import { defaultTheme } from './themes/defaultTheme'
+import { useTypedDispatch } from './redux/hooks/useTypedDispatch'
+import { initCalculationsAC } from './redux/slices/calculationsSlice/actionCreators'
+import { FinancialIndependenceRoute } from './routes/FinancialIndependenceRoute/FinancialIndependenceRoute'
+
+export interface IAppProps {}
+
+export const App: React.FC<IAppProps> = () => {
+  const dispatch = useTypedDispatch()
+
+  useEffect(() => {
+    dispatch(initCalculationsAC())
+    // eslint-disable-next-line
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <ThemeProvider theme={defaultTheme}>
+      <CssBaseline />
+      <Routes>
+        <Route path="/" element={<LiquidityRoute />} />
+        <Route path={LIQUIDITY_ROUTE} element={<LiquidityRoute />} />
+        <Route
+          path={FINANCIAL_INDEPENDENCE_ROUTE}
+          element={<FinancialIndependenceRoute />}
+        />
+      </Routes>
+    </ThemeProvider>
+  )
 }
-
-export default App;
