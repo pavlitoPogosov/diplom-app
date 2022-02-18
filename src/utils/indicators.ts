@@ -22,4 +22,7 @@ export enum IndicatorsEnum {
 
   // Долгосрочные обязательства
   INDICATOR_LTD = 'LTD',
+
+  // Выручка
+  INDICATOR_REVENUE = 'REVENUE',
 }

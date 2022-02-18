@@ -4,6 +4,17 @@ import { ILiquidityFormState } from '../../routes/LiquidityRoute/LiquidityForm/L
 import { IndicatorsEnum } from '../indicators'
 import { getHelpInfo } from './getHelpInfo'
 
+const isReadyForAnalys = (values: ILiquidityFormState) => {
+  return (
+    values.CURRENT_ASSETS !== '' &&
+    values.ACCOUNTS_RECEIVABLE !== '' &&
+    values.BANKROLL !== '' &&
+    values.EQUITY !== '' &&
+    values.FIXED_ASSETS !== '' &&
+    values.SFI !== '' &&
+    values.STO
+  )
+}
 export interface IAnalisItem {
   helpText: string
   color: string
@@ -14,7 +25,7 @@ export interface IAnalisItem {
 export const getLiquidityAnalis = (
   values: ILiquidityFormState
 ): IAnalisItem[] => {
-  if (!Object.values(values).filter(Boolean).length) return []
+  if (!isReadyForAnalys(values)) return []
 
   const DS = new BigJS(values[IndicatorsEnum.INDICATOR_BANKROLL] || 1)
   const KFV = new BigJS(values[IndicatorsEnum.INDICATOR_SFI] || 1)

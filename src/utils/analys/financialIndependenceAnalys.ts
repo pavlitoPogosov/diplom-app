@@ -5,10 +5,21 @@ import { IndicatorsEnum } from '../indicators'
 import { getHelpInfo } from './getHelpInfo'
 import { IAnalisItem } from './liquidityAnalys'
 
+const isReadyForAnalys = (values: IFinancialIndependenceFormState) => {
+  return (
+    values.ACCOUNTS_RECEIVABLE !== '' &&
+    values.CURRENT_ASSETS !== '' &&
+    values.EQUITY !== '' &&
+    values.FIXED_ASSETS !== '' &&
+    values.LTD !== '' &&
+    values.VB !== ''
+  )
+}
+
 export const getFinancialIndependenceAnalys = (
   values: IFinancialIndependenceFormState
 ): IAnalisItem[] => {
-  if (!Object.values(values).filter(Boolean).length) return []
+  if (!isReadyForAnalys(values)) return []
 
   const FI = new BigJS(values[IndicatorsEnum.INDICATOR_EQUITY])
     .div(values[IndicatorsEnum.INDICATOR_VB])

@@ -6,7 +6,7 @@ import { useLocation } from 'react-router'
 import {
   FINANCIAL_INDEPENDENCE_ROUTE,
   LIQUIDITY_ROUTE,
-  PRIMARY_ANALYSIS_ROUTE,
+  EXPRESS_ANALYSIS_ROUTE,
   PROFITABILITY_ROUTE,
   TURNOVER_ROUTE,
 } from '../../../utils/routes'
@@ -30,8 +30,8 @@ const SIDEBAR_LINKS: { text: string; link: string }[] = [
     link: TURNOVER_ROUTE,
   },
   {
-    text: 'Первичный анализ',
-    link: PRIMARY_ANALYSIS_ROUTE,
+    text: 'Экспресс анализ',
+    link: EXPRESS_ANALYSIS_ROUTE,
   },
 ]
 

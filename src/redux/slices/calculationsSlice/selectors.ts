@@ -1,5 +1,6 @@
 import { IFinancialIndependenceFormState } from '../../../routes/FinancialIndependenceRoute/FinancialIndependenceForm/FinancialIndependenceForm'
 import { ILiquidityFormState } from '../../../routes/LiquidityRoute/LiquidityForm/LiquidityForm'
+import { ITurnOverFormState } from '../../../routes/TurnOverRoute/TurnOverForm/TurnOverForm'
 import { IndicatorsEnum } from '../../../utils/indicators'
 import { TReduxRootState } from '../../store'
 
@@ -29,5 +30,15 @@ export const financialIndependenceFormSelector = (
     [IndicatorsEnum.INDICATOR_FIXED_ASSETS]: s.calculations.FIXED_ASSETS,
     [IndicatorsEnum.INDICATOR_ACCOUNTS_RECEIVABLE]:
       s.calculations.ACCOUNTS_RECEIVABLE,
+  }
+}
+
+export const turnOverFormSelector = (
+  s: TReduxRootState
+): ITurnOverFormState => {
+  return {
+    [IndicatorsEnum.INDICATOR_REVENUE]: s.calculations.REVENUE,
+    [IndicatorsEnum.INDICATOR_VB]: s.calculations.VB,
+    [IndicatorsEnum.INDICATOR_CURRENT_ASSETS]: s.calculations.CURRENT_ASSETS,
   }
 }
