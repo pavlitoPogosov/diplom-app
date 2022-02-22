@@ -1,9 +1,23 @@
 import { IProfitabilityFormState } from '../../routes/ProfitabilityRoute/ProfitabilityForm/ProfitabilityForm'
 import { IAnalisItem } from './liquidityAnalys'
 
+const isReadyForAnalys = (values: IProfitabilityFormState) => {
+  return (
+    values.CLEAR_PROFIT !== '' &&
+    values.EQUITY !== '' &&
+    values.LTD !== '' &&
+    values.OTHER_EXPENSES !== '' &&
+    values.PRIME_COST !== '' &&
+    values.REVENUE !== '' &&
+    values.VB !== ''
+  )
+}
+
 export const getProfitabilityAnalys = (
   values: IProfitabilityFormState
 ): IAnalisItem[] => {
+  if (!isReadyForAnalys(values)) return []
+
   return [
     {
       name: 'Рентабельность активов (ROA)',

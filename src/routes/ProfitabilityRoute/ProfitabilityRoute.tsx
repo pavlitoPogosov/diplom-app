@@ -33,26 +33,24 @@ export const ProfitabilityRoute: React.FC<IProfitabilityRouteProps> = () => {
     <MainLayout title="Рентабельность">
       <ProfitabilityForm profitability={profitability} />
 
-      <AnalysResults analys={analys} />
+      {analys && <AnalysResults analys={analys} />}
 
-      {analys && (
-        <Paper elevation={6} sx={{ marginTop: 6, maxWidth: 680, padding: 2 }}>
-          <Typography variant="body1">
-            {`
+      <Paper elevation={6} sx={{ marginTop: 6, maxWidth: 680, padding: 2 }}>
+        <Typography variant="body1">
+          {`
               Анализ показателей рентабельности в сравнении с среднеотраслевыми
             значениями. Нормативных значений нет, смотрятся среднеотраслевые
             показатели, чем больше отклонение, тем больше вероятность налоговой
             проверки, критическим считается отклонение 10% и больше. Посмотреть
             среднеотраслевую рентабельность можно на сайте `}
-            <ProfitabilityLink
-              target="_blank"
-              href="https://www.nalog.gov.ru/rn77/taxation/reference_work/conception_vnp/"
-            >
-              налоговой службы
-            </ProfitabilityLink>
-          </Typography>
-        </Paper>
-      )}
+          <ProfitabilityLink
+            target="_blank"
+            href="https://www.nalog.gov.ru/rn77/taxation/reference_work/conception_vnp/"
+          >
+            налоговой службы
+          </ProfitabilityLink>
+        </Typography>
+      </Paper>
     </MainLayout>
   )
 }
