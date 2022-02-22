@@ -1,5 +1,5 @@
-export const LIQUIDITY_ROUTE = '/liquidity'
+export const LIQUIDITY_ROUTE = '/'
 export const FINANCIAL_INDEPENDENCE_ROUTE = '/financal-independence'
 export const PROFITABILITY_ROUTE = '/profitability'
 export const TURNOVER_ROUTE = '/turnover'
-export const EXPRESS_ANALYSIS_ROUTE = '/express-analys'
+export const EXPRESS_ANALYS_ROUTE = '/express-analys'

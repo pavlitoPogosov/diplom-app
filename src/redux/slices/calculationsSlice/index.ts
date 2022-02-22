@@ -15,6 +15,9 @@ const initialCalculationsState: ICalculationsStoreState = {
   [IndicatorsEnum.INDICATOR_VB]: '',
   [IndicatorsEnum.INDICATOR_LTD]: '',
   [IndicatorsEnum.INDICATOR_REVENUE]: '',
+  [IndicatorsEnum.INDICATOR_CLEAR_PROFIT]: '',
+  [IndicatorsEnum.INDICATOR_PRIME_COST]: '',
+  [IndicatorsEnum.INDICATOR_OTHER_EXPENSES]: '',
 }
 
 export const calculationsSlice = createSlice({
