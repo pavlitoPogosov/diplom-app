@@ -40,4 +40,40 @@ export enum IndicatorsEnum {
 
   // Прочие расходы
   INDICATOR_OTHER_EXPENSES = 'OTHER_EXPENSES',
+
+  // ТЕСТ Дата регистрации
+  INDICATOR_TEST_DATE_REGISTER = 'TEST_DATE_REGISTER',
+
+  // ТЕСТ Информация в СМИ
+  INDICATOR_TEST_SMI_INFO = 'TEST_SMI_INFO',
+
+  // ТЕСТ Разноплановый ОКВЭД
+  INDICATOR_TEST_OKVED = 'TEST_OKVED',
+
+  // ТЕСТ Одновременная смена учредителей и ГД
+  INDICATOR_TEST_GD = 'TEST_GD',
+
+  // ТЕСТ Дочерние/головные организации
+  INDICATOR_TEST_CHILD_CMP = 'TEST_CHILD_CMP',
+
+  // ТЕСТ Качество контрагентов
+  INDICATOR_TEST_QUALITY = 'TEST_QUALITY',
+
+  // ТЕСТ Включение в различные ЧС
+  INDICATOR_TEST_CHS = 'TEST_CHS',
+
+  // ТЕСТ Массовый учредитель
+  INDICATOR_TEST_MU = 'TEST_MU',
+
+  // ТЕСТ Массовый адрес регистрации
+  INDICATOR_TEST_MA = 'TEST_MA',
+
+  // ТЕСТ Вхождение в различные негативные списки
+  INDICATOR_TEST_NL = 'TEST_NL',
+
+  // ТЕСТ Вхождение в различные позитивные списки
+  INDICATOR_TEST_PL = 'TEST_PL',
+
+  // ТЕСТ Наличие лицензий
+  INDICATOR_TEST_HL = 'TEST_HL',
 }

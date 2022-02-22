@@ -1,9 +1,11 @@
+import { MainLayout } from './../../../_layouts/MainLayout/MainLayout'
 import { IProfitabilityFormState } from './../../../routes/ProfitabilityRoute/ProfitabilityForm/ProfitabilityForm'
 import { IFinancialIndependenceFormState } from '../../../routes/FinancialIndependenceRoute/FinancialIndependenceForm/FinancialIndependenceForm'
 import { ILiquidityFormState } from '../../../routes/LiquidityRoute/LiquidityForm/LiquidityForm'
 import { ITurnOverFormState } from '../../../routes/TurnOverRoute/TurnOverForm/TurnOverForm'
 import { IndicatorsEnum } from '../../../utils/indicators'
 import { TReduxRootState } from '../../store'
+import { IExpressAnalysFormState } from '../../../routes/ExpressAnalysRoute/ExpressAnalysForm/ExpressAnalysForm'
 
 export const liquidityFormSelector = (
   s: TReduxRootState
@@ -55,5 +57,25 @@ export const profitabilityFormSelector = (
     [IndicatorsEnum.INDICATOR_REVENUE]: s.calculations.REVENUE,
     [IndicatorsEnum.INDICATOR_EQUITY]: s.calculations.EQUITY,
     [IndicatorsEnum.INDICATOR_LTD]: s.calculations.LTD,
+  }
+}
+
+export const expressAnalysFormSelector = (
+  s: TReduxRootState
+): IExpressAnalysFormState => {
+  return {
+    [IndicatorsEnum.INDICATOR_TEST_DATE_REGISTER]:
+      s.calculations.TEST_DATE_REGISTER,
+    [IndicatorsEnum.INDICATOR_TEST_SMI_INFO]: s.calculations.TEST_SMI_INFO,
+    [IndicatorsEnum.INDICATOR_TEST_OKVED]: s.calculations.TEST_OKVED,
+    [IndicatorsEnum.INDICATOR_TEST_GD]: s.calculations.TEST_GD,
+    [IndicatorsEnum.INDICATOR_TEST_CHILD_CMP]: s.calculations.TEST_CHILD_CMP,
+    [IndicatorsEnum.INDICATOR_TEST_QUALITY]: s.calculations.TEST_QUALITY,
+    [IndicatorsEnum.INDICATOR_TEST_CHS]: s.calculations.TEST_CHS,
+    [IndicatorsEnum.INDICATOR_TEST_MU]: s.calculations.TEST_MU,
+    [IndicatorsEnum.INDICATOR_TEST_MA]: s.calculations.TEST_MU,
+    [IndicatorsEnum.INDICATOR_TEST_NL]: s.calculations.TEST_NL,
+    [IndicatorsEnum.INDICATOR_TEST_PL]: s.calculations.TEST_PL,
+    [IndicatorsEnum.INDICATOR_TEST_HL]: s.calculations.TEST_HL,
   }
 }

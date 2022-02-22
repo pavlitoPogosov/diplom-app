@@ -1,30 +1,29 @@
 import React from 'react'
-import { styled } from '@mui/system'
-import { Typography } from '@mui/material'
+import { Paper, Typography } from '@mui/material'
 
 import { MainLayout } from '../../_layouts/MainLayout/MainLayout'
 import { useTypedSelector } from '../../redux/hooks/useTypedSelector'
-import { ExpressTestForm } from './ExpressTestForm/ExpressTestForm'
-
-const ExpressAnalysWrapper = styled('div')(({ theme }) => ({
-  marginTop: theme.spacing(9),
-}))
+import { ExpressAnalysForm } from './ExpressAnalysForm/ExpressAnalysForm'
+import { expressAnalysFormSelector } from '../../redux/slices/calculationsSlice/selectors'
+import { ExpressAnalysTable } from './ExpressAnalysTable/ExpressAnalysTable'
 
 export interface IExpressAnalysRouteProps {}
 
 export const ExpressAnalysRoute: React.FC<IExpressAnalysRouteProps> = () => {
-  const { questions } = useTypedSelector((s) => s.expressTest)
+  const expressAnalys = useTypedSelector(expressAnalysFormSelector)
 
   return (
     <MainLayout title="Экспресс анализ">
-      <ExpressAnalysWrapper>
-        <Typography sx={{ maxWidth: 520 }} variant="body1">
+      <ExpressAnalysForm expressAnalys={expressAnalys} />
+
+      <ExpressAnalysTable expressAnalys={expressAnalys} />
+
+      <Paper elevation={6} sx={{ marginTop: 6, maxWidth: 680, padding: 2 }}>
+        <Typography variant="body1">
           Решение необходимо принимать в совокупности полученной информации,
           принятие решения не может быть на основании 1 критерия
         </Typography>
-
-        <ExpressTestForm questions={questions} />
-      </ExpressAnalysWrapper>
+      </Paper>
     </MainLayout>
   )
 }

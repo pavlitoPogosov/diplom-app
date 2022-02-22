@@ -5,11 +5,9 @@ import {
 } from '@reduxjs/toolkit'
 
 import { calculationsSlice } from './slices/calculationsSlice'
-import { expressTestSlice } from './slices/expressTestSlice'
 
 const combinedReducer = combineReducers({
   calculations: calculationsSlice.reducer,
-  expressTest: expressTestSlice.reducer,
 })
 
 const rootReducer = (state: any, action: PayloadAction<void>) => {

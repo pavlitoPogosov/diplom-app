@@ -18,6 +18,19 @@ const initialCalculationsState: ICalculationsStoreState = {
   [IndicatorsEnum.INDICATOR_CLEAR_PROFIT]: '',
   [IndicatorsEnum.INDICATOR_PRIME_COST]: '',
   [IndicatorsEnum.INDICATOR_OTHER_EXPENSES]: '',
+
+  [IndicatorsEnum.INDICATOR_TEST_DATE_REGISTER]: '',
+  [IndicatorsEnum.INDICATOR_TEST_SMI_INFO]: '',
+  [IndicatorsEnum.INDICATOR_TEST_OKVED]: '',
+  [IndicatorsEnum.INDICATOR_TEST_GD]: '',
+  [IndicatorsEnum.INDICATOR_TEST_CHILD_CMP]: '',
+  [IndicatorsEnum.INDICATOR_TEST_QUALITY]: '',
+  [IndicatorsEnum.INDICATOR_TEST_CHS]: '',
+  [IndicatorsEnum.INDICATOR_TEST_MU]: '',
+  [IndicatorsEnum.INDICATOR_TEST_MA]: '',
+  [IndicatorsEnum.INDICATOR_TEST_NL]: '',
+  [IndicatorsEnum.INDICATOR_TEST_PL]: '',
+  [IndicatorsEnum.INDICATOR_TEST_HL]: '',
 }
 
 export const calculationsSlice = createSlice({
