@@ -25,7 +25,9 @@ export const AnalysResults: React.FC<IAnalysResultsProps> = ({ analys }) => {
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
             <Typography sx={{ width: '80%', flexShrink: 0 }}>
               {name}
-              <span style={{ marginLeft: 12, color }}>{value}</span>
+              <span style={{ marginLeft: 12, color }}>
+                {Number(value) ? parseFloat(Number(value).toFixed(5)) : ''}
+              </span>
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
