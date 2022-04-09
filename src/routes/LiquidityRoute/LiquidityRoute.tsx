@@ -7,6 +7,7 @@ import { liquidityFormSelector } from '../../redux/slices/calculationsSlice/sele
 
 import { LiquidityForm } from './LiquidityForm/LiquidityForm'
 import { AnalysResults } from '../../common/components/AnalysResults/AnalysResults'
+import { LiquidityDinamic } from './LiquidityDinamic/LiquidityDinamic'
 
 export interface ILiquidityRouteProps {}
 
@@ -17,8 +18,8 @@ export const LiquidityRoute: React.FC<ILiquidityRouteProps> = () => {
   return (
     <MainLayout title="Ликвидность">
       <LiquidityForm liquidity={liquidity} />
-
       <AnalysResults analys={analys} />
+      <LiquidityDinamic />
     </MainLayout>
   )
 }

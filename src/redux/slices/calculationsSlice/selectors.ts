@@ -6,6 +6,7 @@ import { ITurnOverFormState } from '../../../routes/TurnOverRoute/TurnOverForm/T
 import { IndicatorsEnum } from '../../../utils/indicators'
 import { TReduxRootState } from '../../store'
 import { IExpressAnalysFormState } from '../../../routes/ExpressAnalysRoute/ExpressAnalysForm/ExpressAnalysForm'
+import { ILiquidityDinamicFormState } from '../../../routes/LiquidityRoute/LiquidityDinamic/LiquidityDinamic'
 
 export const liquidityFormSelector = (
   s: TReduxRootState
@@ -19,6 +20,21 @@ export const liquidityFormSelector = (
     [IndicatorsEnum.INDICATOR_FIXED_ASSETS]: s.calculations.FIXED_ASSETS,
     [IndicatorsEnum.INDICATOR_SFI]: s.calculations.SFI,
     [IndicatorsEnum.INDICATOR_STO]: s.calculations.STO,
+  }
+}
+
+export const liquidityDinamicFormSelector = (
+  s: TReduxRootState
+): ILiquidityDinamicFormState => {
+  return {
+    [IndicatorsEnum.INDICATOR_EQUITY_0]: s.calculations.EQUITY_0,
+    [IndicatorsEnum.INDICATOR_FIXED_ASSETS_0]: s.calculations.FIXED_ASSETS_0,
+    [IndicatorsEnum.INDICATOR_CURRENT_ASSETS_0]:
+      s.calculations.CURRENT_ASSETS_0,
+    [IndicatorsEnum.INDICATOR_EQUITY_1]: s.calculations.EQUITY_1,
+    [IndicatorsEnum.INDICATOR_FIXED_ASSETS_1]: s.calculations.FIXED_ASSETS_1,
+    [IndicatorsEnum.INDICATOR_CURRENT_ASSETS_1]:
+      s.calculations.CURRENT_ASSETS_1,
   }
 }
 

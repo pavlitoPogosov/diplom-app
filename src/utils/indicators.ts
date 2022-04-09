@@ -76,4 +76,22 @@ export enum IndicatorsEnum {
 
   // ТЕСТ Наличие лицензий
   INDICATOR_TEST_HL = 'TEST_HL',
+
+  // Собственный капитал (0)
+  INDICATOR_EQUITY_0 = 'EQUITY_0',
+
+  // ВНА0	Внеоборотные активы (0)
+  INDICATOR_FIXED_ASSETS_0 = 'FIXED_ASSETS_0',
+
+  // ОА0	Оборотные активы (0)
+  INDICATOR_CURRENT_ASSETS_0 = 'CURRENT_ASSETS_0',
+
+  // СК1	Собственный капитал (1)
+  INDICATOR_EQUITY_1 = 'EQUITY_1',
+
+  // ВНА1	Внеоборотные активы (1)
+  INDICATOR_FIXED_ASSETS_1 = 'FIXED_ASSETS_1',
+
+  // ОА1	Оборотные активы (1)
+  INDICATOR_CURRENT_ASSETS_1 = 'CURRENT_ASSETS_1',
 }
