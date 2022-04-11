@@ -1,7 +1,18 @@
 import React, { useMemo } from 'react'
 import * as yup from 'yup'
 import BigJS from 'big.js'
-import { Button, Grid, Typography } from '@mui/material'
+import {
+  Button,
+  Grid,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography,
+} from '@mui/material'
 import { Form, Formik } from 'formik'
 import { styled } from '@mui/system'
 import { InputField } from '../../../common/components/InputField/InputField'
@@ -34,9 +45,13 @@ const LiquidityFormItem = styled(Grid)(({ theme }) => ({
   marginBottom: theme.spacing(1),
 }))
 
-export interface ILiquidityDinamicProps {}
+export interface ILiquidityDinamicProps {
+  currentPeriodValue: string
+}
 
-export const LiquidityDinamic: React.FC<ILiquidityDinamicProps> = () => {
+export const LiquidityDinamic: React.FC<ILiquidityDinamicProps> = ({
+  currentPeriodValue,
+}) => {
   const formValue = useTypedSelector(
     liquidityDinamicFormSelector
   ) as ILiquidityDinamicFormState
@@ -62,8 +77,6 @@ export const LiquidityDinamic: React.FC<ILiquidityDinamicProps> = () => {
       const first = new BigJS(number1 || 1)
       const second = new BigJS(number2 || 1)
       const third = new BigJS(number3 || 1)
-
-      console.log(number1, number2, number3)
 
       return first.minus(second).div(third).valueOf()
     }
@@ -91,7 +104,7 @@ export const LiquidityDinamic: React.FC<ILiquidityDinamicProps> = () => {
         Динамика
       </Typography>
       <Typography marginBottom={1} variant="body1">
-        Расчет показателей, предусматривающих изменения показателя в динамике
+        Расчет коэффициентов, предусматривающих изменения показателя в динамике
       </Typography>
       <Typography marginBottom={4} variant="body1">
         (0) - предыдущий период
@@ -163,20 +176,28 @@ export const LiquidityDinamic: React.FC<ILiquidityDinamicProps> = () => {
       </Formik>
 
       {!!beforePrevPeriod && !!prevPeriod && (
-        <>
-          <Typography variant="h6" marginTop={4} marginBottom={2}>
-            Коэффициент обеспеченности собственными оборотными средствами
-            (КобСОС)
-          </Typography>
-
-          <Typography variant="body1" marginTop={1} marginBottom={2}>
-            {`предыдущий период - (${prevPeriod})`}
-          </Typography>
-
-          <Typography variant="body1" marginTop={1} marginBottom={2}>
-            {`период перед предыдущим - (${beforePrevPeriod})`}
-          </Typography>
-        </>
+        <TableContainer sx={{ marginTop: 4 }} component={Paper}>
+          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>Период</TableCell>
+                <TableCell align="right">1</TableCell>
+                <TableCell align="right">0</TableCell>
+                <TableCell align="right">текущий</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <TableRow>
+                <TableCell>значение</TableCell>
+                <TableCell align="right">{prevPeriod}</TableCell>
+                <TableCell align="right">{beforePrevPeriod}</TableCell>
+                <TableCell align="right">
+                  {currentPeriodValue || '---'}
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </TableContainer>
       )}
     </>
   )

@@ -5,6 +5,7 @@ import { AnalysResults } from '../../common/components/AnalysResults/AnalysResul
 import { financialIndependenceFormSelector } from '../../redux/slices/calculationsSlice/selectors'
 import { getFinancialIndependenceAnalys } from '../../utils/analys/financialIndependenceAnalys'
 import { MainLayout } from '../../_layouts/MainLayout/MainLayout'
+import { DinamicForm } from './DinamicForm/DinamicForm'
 
 import { FinancialIndependenceForm } from './FinancialIndependenceForm/FinancialIndependenceForm'
 
@@ -24,8 +25,8 @@ export const FinancialIndependenceRoute: React.FC<
       <FinancialIndependenceForm
         financialIndependence={financialIndependence}
       />
-
       <AnalysResults analys={analys} />
+      <DinamicForm currentPeriodValue={analys[0]?.value || '0'} />
     </MainLayout>
   )
 }

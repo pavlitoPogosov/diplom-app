@@ -19,7 +19,7 @@ export const LiquidityRoute: React.FC<ILiquidityRouteProps> = () => {
     <MainLayout title="Ликвидность">
       <LiquidityForm liquidity={liquidity} />
       <AnalysResults analys={analys} />
-      <LiquidityDinamic />
+      <LiquidityDinamic currentPeriodValue={analys[3]?.value || '0'} />
     </MainLayout>
   )
 }

@@ -94,4 +94,10 @@ export enum IndicatorsEnum {
 
   // ОА1	Оборотные активы (1)
   INDICATOR_CURRENT_ASSETS_1 = 'CURRENT_ASSETS_1',
+
+  // Валюта баланса (0)
+  INDICATOR_VB_0 = 'VB_0',
+
+  // Валюта баланса (1)
+  INDICATOR_VB_1 = 'VB_1',
 }

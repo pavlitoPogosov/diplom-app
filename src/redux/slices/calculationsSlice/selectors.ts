@@ -7,6 +7,7 @@ import { IndicatorsEnum } from '../../../utils/indicators'
 import { TReduxRootState } from '../../store'
 import { IExpressAnalysFormState } from '../../../routes/ExpressAnalysRoute/ExpressAnalysForm/ExpressAnalysForm'
 import { ILiquidityDinamicFormState } from '../../../routes/LiquidityRoute/LiquidityDinamic/LiquidityDinamic'
+import { IDinamicFormState } from '../../../routes/FinancialIndependenceRoute/DinamicForm/DinamicForm'
 
 export const liquidityFormSelector = (
   s: TReduxRootState
@@ -49,6 +50,17 @@ export const financialIndependenceFormSelector = (
     [IndicatorsEnum.INDICATOR_FIXED_ASSETS]: s.calculations.FIXED_ASSETS,
     [IndicatorsEnum.INDICATOR_ACCOUNTS_RECEIVABLE]:
       s.calculations.ACCOUNTS_RECEIVABLE,
+  }
+}
+
+export const financialIndependenceDinamicFormSelector = (
+  s: TReduxRootState
+): IDinamicFormState => {
+  return {
+    [IndicatorsEnum.INDICATOR_EQUITY_0]: s.calculations.EQUITY_0,
+    [IndicatorsEnum.INDICATOR_VB_0]: s.calculations.VB_0,
+    [IndicatorsEnum.INDICATOR_EQUITY_1]: s.calculations.EQUITY_1,
+    [IndicatorsEnum.INDICATOR_VB_1]: s.calculations.VB_1,
   }
 }
 
