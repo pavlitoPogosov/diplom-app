@@ -100,4 +100,34 @@ export enum IndicatorsEnum {
 
   // Валюта баланса (1)
   INDICATOR_VB_1 = 'VB_1',
+
+  // Чистая прибыль (0)
+  INDICATOR_CLEAR_PROFIT_0 = 'CLEAR_PROFIT_0',
+
+  // Выручка (0)
+  INDICATOR_REVENUE_0 = 'REVENUE_0',
+
+  // Себестоимость (0)
+  INDICATOR_PRIME_COST_0 = 'PRIME_COST_0',
+
+  // Прочие расходы (0)
+  INDICATOR_OTHER_EXPENSES_0 = 'OTHER_EXPENSES_0',
+
+  // Долгосрочные обязательства (0)
+  INDICATOR_LTD_0 = 'LTD_0',
+
+  // Чистая прибыль (1)
+  INDICATOR_CLEAR_PROFIT_1 = 'CLEAR_PROFIT_1',
+
+  // Выручка (1)
+  INDICATOR_REVENUE_1 = 'REVENUE_1',
+
+  // Себестоимость (1)
+  INDICATOR_PRIME_COST_1 = 'PRIME_COST_1',
+
+  // Прочие расходы (1)
+  INDICATOR_OTHER_EXPENSES_1 = 'OTHER_EXPENSES_1',
+
+  // Долгосрочные обязательства (1)
+  INDICATOR_LTD_1 = 'LTD_1',
 }

@@ -9,6 +9,7 @@ import { AnalysResults } from '../../common/components/AnalysResults/AnalysResul
 
 import { ProfitabilityForm } from './ProfitabilityForm/ProfitabilityForm'
 import { getProfitabilityAnalys } from '../../utils/analys/profitabilityAnalys'
+import { ProfitabilityDinamic } from './ProfitabilityDinamic/ProfitabilityDinamic'
 
 const ProfitabilityLink = styled('a')(({ theme }) => ({
   color: '#2c2c2c',
@@ -51,6 +52,8 @@ export const ProfitabilityRoute: React.FC<IProfitabilityRouteProps> = () => {
           </ProfitabilityLink>
         </Typography>
       </Paper>
+
+      <ProfitabilityDinamic />
     </MainLayout>
   )
 }

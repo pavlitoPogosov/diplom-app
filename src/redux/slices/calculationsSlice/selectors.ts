@@ -8,6 +8,7 @@ import { TReduxRootState } from '../../store'
 import { IExpressAnalysFormState } from '../../../routes/ExpressAnalysRoute/ExpressAnalysForm/ExpressAnalysForm'
 import { ILiquidityDinamicFormState } from '../../../routes/LiquidityRoute/LiquidityDinamic/LiquidityDinamic'
 import { IDinamicFormState } from '../../../routes/FinancialIndependenceRoute/DinamicForm/DinamicForm'
+import { IProfitabilityDinamicFormState } from '../../../routes/ProfitabilityRoute/ProfitabilityDinamic/ProfitabilityDinamic'
 
 export const liquidityFormSelector = (
   s: TReduxRootState
@@ -61,6 +62,30 @@ export const financialIndependenceDinamicFormSelector = (
     [IndicatorsEnum.INDICATOR_VB_0]: s.calculations.VB_0,
     [IndicatorsEnum.INDICATOR_EQUITY_1]: s.calculations.EQUITY_1,
     [IndicatorsEnum.INDICATOR_VB_1]: s.calculations.VB_1,
+  }
+}
+
+export const profitabilityDinamicFormSelector = (
+  s: TReduxRootState
+): IProfitabilityDinamicFormState => {
+  return {
+    [IndicatorsEnum.INDICATOR_CLEAR_PROFIT_0]: s.calculations.CLEAR_PROFIT_0,
+    [IndicatorsEnum.INDICATOR_VB_0]: s.calculations.VB_0,
+    [IndicatorsEnum.INDICATOR_REVENUE_0]: s.calculations.REVENUE_0,
+    [IndicatorsEnum.INDICATOR_PRIME_COST_0]: s.calculations.PRIME_COST_0,
+    [IndicatorsEnum.INDICATOR_OTHER_EXPENSES_0]:
+      s.calculations.OTHER_EXPENSES_0,
+    [IndicatorsEnum.INDICATOR_EQUITY_0]: s.calculations.EQUITY_0,
+    [IndicatorsEnum.INDICATOR_LTD_0]: s.calculations.LTD_0,
+
+    [IndicatorsEnum.INDICATOR_CLEAR_PROFIT_1]: s.calculations.CLEAR_PROFIT_1,
+    [IndicatorsEnum.INDICATOR_VB_1]: s.calculations.VB_1,
+    [IndicatorsEnum.INDICATOR_REVENUE_1]: s.calculations.REVENUE_1,
+    [IndicatorsEnum.INDICATOR_PRIME_COST_1]: s.calculations.PRIME_COST_1,
+    [IndicatorsEnum.INDICATOR_OTHER_EXPENSES_1]:
+      s.calculations.OTHER_EXPENSES_1,
+    [IndicatorsEnum.INDICATOR_EQUITY_1]: s.calculations.EQUITY_1,
+    [IndicatorsEnum.INDICATOR_LTD_1]: s.calculations.LTD_1,
   }
 }
 
