@@ -4,10 +4,13 @@ import { Form, Formik } from 'formik'
 import React from 'react'
 import * as yup from 'yup'
 import { InputField } from '../../../common/components/InputField/InputField'
+import { useTypedDispatch } from '../../../redux/hooks/useTypedDispatch'
 import { useTypedSelector } from '../../../redux/hooks/useTypedSelector'
+import { updateCalculationsValuesAC } from '../../../redux/slices/calculationsSlice/actionCreators'
 import { profitabilityDinamicFormSelector } from '../../../redux/slices/calculationsSlice/selectors'
 import { IndicatorsEnum } from '../../../utils/indicators'
 import { COMMON_VALIDATION } from '../../../utils/validation'
+import { ProfitabilityCharts } from '../ProfitabilityCharts/ProfitabilityCharts'
 
 const FORM_VALIDATION_SCHEMA = yup.object().shape({
   [IndicatorsEnum.INDICATOR_CLEAR_PROFIT_0]: COMMON_VALIDATION,
@@ -55,9 +58,14 @@ export const ProfitabilityDinamic: React.FC<
   IProfitabilityDinamicProps
 > = () => {
   const formValue = useTypedSelector(profitabilityDinamicFormSelector)
+  const dispatch = useTypedDispatch()
 
-  const handleFormSubmit = () => {
-    //
+  const handleFormSubmit = (values: IProfitabilityDinamicFormState) => {
+    dispatch(
+      updateCalculationsValuesAC({
+        values,
+      }) as any
+    )
   }
 
   return (
@@ -192,6 +200,8 @@ export const ProfitabilityDinamic: React.FC<
           </Button>
         </Form>
       </Formik>
+
+      <ProfitabilityCharts />
     </>
   )
 }

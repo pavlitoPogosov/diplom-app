@@ -1,0 +1,337 @@
+import { Typography } from '@mui/material'
+import BigJs from 'big.js'
+import React from 'react'
+import { CartesianGrid, Line, LineChart, Tooltip, XAxis, YAxis } from 'recharts'
+import { useTypedSelector } from '../../../redux/hooks/useTypedSelector'
+import {
+  profitabilityDinamicFormSelector,
+  profitabilityFormSelector,
+} from '../../../redux/slices/calculationsSlice/selectors'
+import { IndicatorsEnum } from '../../../utils/indicators'
+import { IProfitabilityDinamicFormState } from '../ProfitabilityDinamic/ProfitabilityDinamic'
+import { IProfitabilityFormState } from '../ProfitabilityForm/ProfitabilityForm'
+
+const getROA = (
+  values: IProfitabilityDinamicFormState,
+  currentValue: IProfitabilityFormState
+) => {
+  const ROA = currentValue[IndicatorsEnum.INDICATOR_CLEAR_PROFIT]
+    ? new BigJs(currentValue[IndicatorsEnum.INDICATOR_CLEAR_PROFIT])
+        .div(currentValue[IndicatorsEnum.INDICATOR_VB])
+        .toFixed(1)
+    : 0
+
+  const ROA_0 = new BigJs(values[IndicatorsEnum.INDICATOR_CLEAR_PROFIT_0])
+    .div(values[IndicatorsEnum.INDICATOR_VB_0])
+    .toFixed(1)
+
+  const ROA_1 = new BigJs(values[IndicatorsEnum.INDICATOR_CLEAR_PROFIT_1])
+    .div(values[IndicatorsEnum.INDICATOR_VB_1])
+    .toFixed(1)
+
+  return {
+    ROA_1,
+    ROA_0,
+    ROA,
+  }
+}
+
+const getROS = (
+  values: IProfitabilityDinamicFormState,
+  currentValue: IProfitabilityFormState
+) => {
+  const ROS = currentValue[IndicatorsEnum.INDICATOR_CLEAR_PROFIT]
+    ? new BigJs(currentValue[IndicatorsEnum.INDICATOR_CLEAR_PROFIT])
+        .div(currentValue[IndicatorsEnum.INDICATOR_REVENUE])
+        .toFixed(1)
+    : 0
+
+  const ROS_0 = new BigJs(values[IndicatorsEnum.INDICATOR_CLEAR_PROFIT_0])
+    .div(values[IndicatorsEnum.INDICATOR_REVENUE_0])
+    .toFixed(1)
+
+  const ROS_1 = new BigJs(values[IndicatorsEnum.INDICATOR_CLEAR_PROFIT_1])
+    .div(values[IndicatorsEnum.INDICATOR_REVENUE_1])
+    .toFixed(1)
+
+  return {
+    ROS_1,
+    ROS_0,
+    ROS,
+  }
+}
+
+const getROCC = (
+  values: IProfitabilityDinamicFormState,
+  currentValue: IProfitabilityFormState
+) => {
+  const ROCC = currentValue[IndicatorsEnum.INDICATOR_CLEAR_PROFIT]
+    ? new BigJs(currentValue[IndicatorsEnum.INDICATOR_CLEAR_PROFIT])
+        .div(
+          new BigJs(currentValue[IndicatorsEnum.INDICATOR_PRIME_COST]).add(
+            new BigJs(currentValue[IndicatorsEnum.INDICATOR_OTHER_EXPENSES])
+          )
+        )
+        .toFixed(1)
+    : 0
+
+  const ROCC_0 = new BigJs(values[IndicatorsEnum.INDICATOR_CLEAR_PROFIT_0])
+    .div(
+      new BigJs(values[IndicatorsEnum.INDICATOR_PRIME_COST_0]).add(
+        new BigJs(values[IndicatorsEnum.INDICATOR_OTHER_EXPENSES_0])
+      )
+    )
+    .toFixed(1)
+
+  const ROCC_1 = new BigJs(values[IndicatorsEnum.INDICATOR_CLEAR_PROFIT_1])
+    .div(
+      new BigJs(values[IndicatorsEnum.INDICATOR_PRIME_COST_1]).add(
+        new BigJs(values[IndicatorsEnum.INDICATOR_OTHER_EXPENSES_1])
+      )
+    )
+    .toFixed(1)
+
+  return {
+    ROCC_1,
+    ROCC_0,
+    ROCC,
+  }
+}
+
+const getROE = (
+  values: IProfitabilityDinamicFormState,
+  currentValue: IProfitabilityFormState
+) => {
+  const ROE = currentValue[IndicatorsEnum.INDICATOR_CLEAR_PROFIT]
+    ? new BigJs(currentValue[IndicatorsEnum.INDICATOR_CLEAR_PROFIT])
+        .div(new BigJs(currentValue[IndicatorsEnum.INDICATOR_EQUITY]))
+        .toFixed(1)
+    : 0
+
+  const ROE_0 = new BigJs(values[IndicatorsEnum.INDICATOR_CLEAR_PROFIT_0])
+    .div(new BigJs(values[IndicatorsEnum.INDICATOR_EQUITY_0]))
+    .toFixed(1)
+
+  const ROE_1 = new BigJs(values[IndicatorsEnum.INDICATOR_CLEAR_PROFIT_1])
+    .div(new BigJs(values[IndicatorsEnum.INDICATOR_EQUITY_1]))
+    .toFixed(1)
+
+  return {
+    ROE_1,
+    ROE_0,
+    ROE,
+  }
+}
+
+const getROI = (
+  values: IProfitabilityDinamicFormState,
+  currentValue: IProfitabilityFormState
+) => {
+  const ROI = currentValue[IndicatorsEnum.INDICATOR_CLEAR_PROFIT]
+    ? new BigJs(currentValue[IndicatorsEnum.INDICATOR_CLEAR_PROFIT])
+        .div(
+          new BigJs(currentValue[IndicatorsEnum.INDICATOR_EQUITY]).add(
+            new BigJs(currentValue[IndicatorsEnum.INDICATOR_LTD])
+          )
+        )
+        .toFixed(1)
+    : 0
+
+  const ROI_0 = new BigJs(values[IndicatorsEnum.INDICATOR_CLEAR_PROFIT_0])
+    .div(
+      new BigJs(values[IndicatorsEnum.INDICATOR_EQUITY_0]).add(
+        new BigJs(values[IndicatorsEnum.INDICATOR_LTD_0])
+      )
+    )
+    .toFixed(1)
+
+  const ROI_1 = new BigJs(values[IndicatorsEnum.INDICATOR_CLEAR_PROFIT_1])
+    .div(
+      new BigJs(values[IndicatorsEnum.INDICATOR_EQUITY_1]).add(
+        new BigJs(values[IndicatorsEnum.INDICATOR_LTD_1])
+      )
+    )
+    .toFixed(1)
+
+  return {
+    ROI_1,
+    ROI_0,
+    ROI,
+  }
+}
+
+export interface IProfitabilityChartsProps {}
+
+export const ProfitabilityCharts: React.FC<IProfitabilityChartsProps> = () => {
+  const dinamicValue = useTypedSelector(profitabilityDinamicFormSelector)
+  const usualValue = useTypedSelector(profitabilityFormSelector)
+
+  if (!dinamicValue[IndicatorsEnum.INDICATOR_LTD_1]) {
+    return null
+  }
+
+  const { ROA_1, ROA_0, ROA } = getROA(dinamicValue, usualValue)
+  const { ROS_1, ROS_0, ROS } = getROS(dinamicValue, usualValue)
+  const { ROCC_1, ROCC_0, ROCC } = getROCC(dinamicValue, usualValue)
+  const { ROE, ROE_0, ROE_1 } = getROE(dinamicValue, usualValue)
+  const { ROI, ROI_0, ROI_1 } = getROI(dinamicValue, usualValue)
+
+  return (
+    <>
+      <Typography marginTop={4} marginBottom={2} variant="h4">
+        Рентабельность активов (ROA)
+      </Typography>
+
+      <LineChart
+        width={730}
+        height={250}
+        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+        data={[
+          {
+            name: 'Период 1',
+            Значение: ROA_1,
+          },
+          {
+            name: 'Период 0',
+            Значение: ROA_0,
+          },
+          {
+            name: 'Текущий',
+            Значение: ROA,
+          },
+        ]}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+
+        <Line type="monotone" dataKey="Значение" stroke="#8884d8" />
+      </LineChart>
+
+      <Typography marginTop={4} marginBottom={2} variant="h4">
+        Рентабельность продаж (ROS)
+      </Typography>
+
+      <LineChart
+        width={730}
+        height={250}
+        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+        data={[
+          {
+            name: 'Период 1',
+            Значение: ROS_1,
+          },
+          {
+            name: 'Период 0',
+            Значение: ROS_0,
+          },
+          {
+            name: 'Текущий',
+            Значение: ROS,
+          },
+        ]}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+
+        <Line type="monotone" dataKey="Значение" stroke="#8884d8" />
+      </LineChart>
+
+      <Typography marginTop={4} marginBottom={2} variant="h4">
+        Рентабельность текущих затрат (ROCC)
+      </Typography>
+
+      <LineChart
+        width={730}
+        height={250}
+        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+        data={[
+          {
+            name: 'Период 1',
+            Значение: ROCC_1,
+          },
+          {
+            name: 'Период 0',
+            Значение: ROCC_0,
+          },
+          {
+            name: 'Текущий',
+            Значение: ROCC,
+          },
+        ]}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+
+        <Line type="monotone" dataKey="Значение" stroke="#8884d8" />
+      </LineChart>
+
+      <Typography marginTop={4} marginBottom={2} variant="h4">
+        Рентабельность собственного капитала (ROE)
+      </Typography>
+
+      <LineChart
+        width={730}
+        height={250}
+        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+        data={[
+          {
+            name: 'Период 1',
+            Значение: ROE_1,
+          },
+          {
+            name: 'Период 0',
+            Значение: ROE_0,
+          },
+          {
+            name: 'Текущий',
+            Значение: ROE,
+          },
+        ]}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+
+        <Line type="monotone" dataKey="Значение" stroke="#8884d8" />
+      </LineChart>
+
+      <Typography marginTop={4} marginBottom={2} variant="h4">
+        Рентабельность инвестиций (ROI)
+      </Typography>
+
+      <LineChart
+        width={730}
+        height={250}
+        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+        data={[
+          {
+            name: 'Период 1',
+            Значение: ROI_1,
+          },
+          {
+            name: 'Период 0',
+            Значение: ROI_0,
+          },
+          {
+            name: 'Текущий',
+            Значение: ROI,
+          },
+        ]}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+
+        <Line type="monotone" dataKey="Значение" stroke="#8884d8" />
+      </LineChart>
+    </>
+  )
+}
