@@ -53,7 +53,7 @@ export const DinamicForm: React.FC<IDinamicFormProps> = ({
     dispatch(
       updateCalculationsValuesAC({
         values,
-      })
+      }) as any
     )
   }
 
@@ -66,10 +66,11 @@ export const DinamicForm: React.FC<IDinamicFormProps> = ({
     }
 
     const getResult = (number1: number, number2: number) => {
+      console.log(number1, number2)
       const first = new BigJS(number1 || 1)
       const second = new BigJS(number2 || 1)
 
-      return first.div(second).valueOf()
+      return first.div(second).toFixed(4).valueOf()
     }
 
     const prevPeriod = getResult(
@@ -77,8 +78,8 @@ export const DinamicForm: React.FC<IDinamicFormProps> = ({
       Number(formValue[IndicatorsEnum.INDICATOR_VB_0])
     )
     const beforePrevPeriod = getResult(
-      Number(formValue[IndicatorsEnum.INDICATOR_EQUITY_0]),
-      Number(formValue[IndicatorsEnum.INDICATOR_VB_0])
+      Number(formValue[IndicatorsEnum.INDICATOR_EQUITY_1]),
+      Number(formValue[IndicatorsEnum.INDICATOR_VB_1])
     )
 
     return {
@@ -151,6 +152,10 @@ export const DinamicForm: React.FC<IDinamicFormProps> = ({
           </Form>
         </Formik>
       </FormWrapper>
+
+      <Typography marginTop={10} marginBottom={2} variant="h4">
+        Коэффициент автономии (финансовой независимости)
+      </Typography>
 
       {!!beforePrevPeriod && !!prevPeriod && (
         <TableContainer sx={{ marginTop: 4 }} component={Paper}>

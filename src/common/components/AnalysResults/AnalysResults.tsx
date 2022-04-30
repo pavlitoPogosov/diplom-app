@@ -11,9 +11,13 @@ import { IAnalisItem } from '../../../utils/analys/liquidityAnalys'
 
 export interface IAnalysResultsProps {
   analys: IAnalisItem[]
+  isPercentage?: boolean
 }
 
-export const AnalysResults: React.FC<IAnalysResultsProps> = ({ analys }) => {
+export const AnalysResults: React.FC<IAnalysResultsProps> = ({
+  analys,
+  isPercentage,
+}) => {
   if (!analys.length) return null
   return (
     <>
@@ -27,6 +31,7 @@ export const AnalysResults: React.FC<IAnalysResultsProps> = ({ analys }) => {
               {name}
               <span style={{ marginLeft: 12, color }}>
                 {Number(value) ? parseFloat(Number(value).toFixed(5)) : ''}
+                {isPercentage ? '%' : ''}
               </span>
             </Typography>
           </AccordionSummary>

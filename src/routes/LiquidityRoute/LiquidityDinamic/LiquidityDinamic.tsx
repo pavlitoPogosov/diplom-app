@@ -78,7 +78,7 @@ export const LiquidityDinamic: React.FC<ILiquidityDinamicProps> = ({
       const second = new BigJS(number2 || 1)
       const third = new BigJS(number3 || 1)
 
-      return first.minus(second).div(third).valueOf()
+      return first.minus(second).div(third).toFixed(4).valueOf()
     }
 
     const prevPeriod = getResult(
@@ -111,7 +111,6 @@ export const LiquidityDinamic: React.FC<ILiquidityDinamicProps> = ({
         <br />
         (1) - период перед предыдущим
       </Typography>
-
       <Formik
         validationSchema={FORM_VALIDATION_SCHEMA}
         initialValues={formValue}
@@ -174,6 +173,9 @@ export const LiquidityDinamic: React.FC<ILiquidityDinamicProps> = ({
           </Button>
         </Form>
       </Formik>
+      <Typography marginTop={10} marginBottom={2} variant="h4">
+        Коэффициент обеспеченности собственными оборотными средствами
+      </Typography>
 
       {!!beforePrevPeriod && !!prevPeriod && (
         <TableContainer sx={{ marginTop: 4 }} component={Paper}>

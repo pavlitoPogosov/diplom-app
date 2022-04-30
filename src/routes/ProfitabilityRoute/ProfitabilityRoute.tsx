@@ -34,7 +34,7 @@ export const ProfitabilityRoute: React.FC<IProfitabilityRouteProps> = () => {
     <MainLayout title="Рентабельность">
       <ProfitabilityForm profitability={profitability} />
 
-      {analys && <AnalysResults analys={analys} />}
+      {analys && <AnalysResults analys={analys} isPercentage />}
 
       <Paper elevation={6} sx={{ marginTop: 6, maxWidth: 680, padding: 2 }}>
         <Typography variant="body1">

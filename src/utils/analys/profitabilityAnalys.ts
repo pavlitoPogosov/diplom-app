@@ -21,25 +21,29 @@ export const getProfitabilityAnalys = (
 ): IAnalisItem[] => {
   if (!isReadyForAnalys(values)) return []
 
-  const ROA = new BigJs(values[IndicatorsEnum.INDICATOR_CLEAR_PROFIT]).div(
-    values[IndicatorsEnum.INDICATOR_VB]
-  )
-  const ROS = new BigJs(values[IndicatorsEnum.INDICATOR_CLEAR_PROFIT]).div(
-    values[IndicatorsEnum.INDICATOR_REVENUE]
-  )
-  const ROCC = new BigJs(values[IndicatorsEnum.INDICATOR_CLEAR_PROFIT]).div(
-    new BigJs(values[IndicatorsEnum.INDICATOR_PRIME_COST]).add(
-      new BigJs(values[IndicatorsEnum.INDICATOR_OTHER_EXPENSES])
+  const ROA = new BigJs(values[IndicatorsEnum.INDICATOR_CLEAR_PROFIT])
+    .div(values[IndicatorsEnum.INDICATOR_VB])
+    .mul(100)
+  const ROS = new BigJs(values[IndicatorsEnum.INDICATOR_CLEAR_PROFIT])
+    .div(values[IndicatorsEnum.INDICATOR_REVENUE])
+    .mul(100)
+  const ROCC = new BigJs(values[IndicatorsEnum.INDICATOR_CLEAR_PROFIT])
+    .div(
+      new BigJs(values[IndicatorsEnum.INDICATOR_PRIME_COST]).add(
+        new BigJs(values[IndicatorsEnum.INDICATOR_OTHER_EXPENSES])
+      )
     )
-  )
-  const ROE = new BigJs(values[IndicatorsEnum.INDICATOR_CLEAR_PROFIT]).div(
-    new BigJs(values[IndicatorsEnum.INDICATOR_EQUITY])
-  )
-  const ROI = new BigJs(values[IndicatorsEnum.INDICATOR_CLEAR_PROFIT]).div(
-    new BigJs(values[IndicatorsEnum.INDICATOR_EQUITY]).add(
-      new BigJs(values[IndicatorsEnum.INDICATOR_LTD])
+    .mul(100)
+  const ROE = new BigJs(values[IndicatorsEnum.INDICATOR_CLEAR_PROFIT])
+    .div(new BigJs(values[IndicatorsEnum.INDICATOR_EQUITY]))
+    .mul(100)
+  const ROI = new BigJs(values[IndicatorsEnum.INDICATOR_CLEAR_PROFIT])
+    .div(
+      new BigJs(values[IndicatorsEnum.INDICATOR_EQUITY]).add(
+        new BigJs(values[IndicatorsEnum.INDICATOR_LTD])
+      )
     )
-  )
+    .mul(100)
 
   return [
     {
