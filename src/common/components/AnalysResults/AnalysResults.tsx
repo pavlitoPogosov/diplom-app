@@ -30,7 +30,7 @@ export const AnalysResults: React.FC<IAnalysResultsProps> = ({
             <Typography sx={{ width: '80%', flexShrink: 0 }}>
               {name}
               <span style={{ marginLeft: 12, color }}>
-                {Number(value) ? parseFloat(Number(value).toFixed(5)) : ''}
+                {Number(value) ? parseFloat(Number(value).toFixed(5)) : value}
                 {isPercentage ? '%' : ''}
               </span>
             </Typography>

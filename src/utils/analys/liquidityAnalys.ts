@@ -39,7 +39,11 @@ export const getLiquidityAnalis = (
   const AL = DS.add(KFV).div(KO).valueOf()
   const UL = DS.add(KFV).add(DZ).div(KO).valueOf()
   const CL = QA.div(KO).valueOf()
-  const WCR = DS.add(KFV).div(KO).valueOf()
+
+  const WCR = new BigJS(values[IndicatorsEnum.INDICATOR_EQUITY] || 1)
+    .minus(new BigJS(values[IndicatorsEnum.INDICATOR_FIXED_ASSETS]))
+    .div(new BigJS(values[IndicatorsEnum.INDICATOR_CURRENT_ASSETS]))
+    .valueOf()
 
   const ALHelpInfo = getHelpInfo(AL, 0.2, 0.5, {
     normal:

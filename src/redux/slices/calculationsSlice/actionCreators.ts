@@ -30,7 +30,6 @@ export const updateCalculationsValuesAC: TReduxActionCreator<
       ...values,
     }
     dispatch(calculationsActions.updateState(newValues))
-
     try {
       const { calculations } = getState()
       localStorage.setItem(
