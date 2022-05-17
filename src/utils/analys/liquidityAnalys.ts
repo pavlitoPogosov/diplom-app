@@ -27,14 +27,12 @@ export const getLiquidityAnalis = (
 ): IAnalisItem[] => {
   if (!isReadyForAnalys(values)) return []
 
-  const DS = new BigJS(values[IndicatorsEnum.INDICATOR_BANKROLL] || 1)
-  const KFV = new BigJS(values[IndicatorsEnum.INDICATOR_SFI] || 1)
-  const KO = new BigJS(values[IndicatorsEnum.INDICATOR_STO] || 1)
-  const DZ = new BigJS(
-    values[IndicatorsEnum.INDICATOR_ACCOUNTS_RECEIVABLE] || 1
-  )
-
   const QA = new BigJS(values[IndicatorsEnum.INDICATOR_CURRENT_ASSETS] || 1)
+
+  const DS = new BigJS(values[IndicatorsEnum.INDICATOR_BANKROLL])
+  const KFV = new BigJS(values[IndicatorsEnum.INDICATOR_SFI])
+  const KO = new BigJS(values[IndicatorsEnum.INDICATOR_ACCOUNTS_RECEIVABLE])
+  const DZ = new BigJS(values[IndicatorsEnum.INDICATOR_STO])
 
   const AL = DS.add(KFV).div(KO).valueOf()
   const UL = DS.add(KFV).add(DZ).div(KO).valueOf()
